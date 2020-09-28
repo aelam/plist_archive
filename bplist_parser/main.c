@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <plist/plist.h>
-#include "bplist_parser.h"
+#include "archived_plist_parser.h"
 
 
 char *readFile(char *fileName) {
@@ -39,7 +39,8 @@ int main(int argc, const char * argv[]) {
     const char *data = readFile("/Users/wanglun/Documents/workspace/bplist_parser/bplist_parser/processes.plist");
     plist_from_xml(data, strlen(data), &plist);
     
-    parse_bplist(plist);
+    plist_t new_plist = parse_archived_plist(plist);
+    print_plist(new_plist);
     
     printf("Hello, World!\n");
     return 0;
