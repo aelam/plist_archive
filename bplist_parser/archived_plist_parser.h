@@ -9,11 +9,11 @@
 #ifndef bplist_parser_h
 #define bplist_parser_h
 
+#define ENABLE_PRINT 1
+
 #include <plist/plist.h>
 
 plist_t parse_archived_plist(plist_t plist);
 void print_plist(plist_t pl);
-
-
 
 #endif /* bplist_parser_h */

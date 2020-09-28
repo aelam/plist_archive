@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA72CCF62521C3A00011CF34 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = FA72CCF52521C3A00011CF34 /* main.c */; };
+		FA96238A252224C6000788C7 /* libplist-2.0.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FAA3760C2521C4CD00F89E48 /* libplist-2.0.3.dylib */; };
 		FAA3760D2521C4CD00F89E48 /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA3760C2521C4CD00F89E48 /* libplist-2.0.3.dylib */; };
 		FAA376172521ED0300F89E48 /* archived_bplist_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = FAA376152521ED0200F89E48 /* archived_bplist_parser.c */; };
 /* End PBXBuildFile section */
@@ -22,11 +23,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		FA96238B252224C6000788C7 /* Embed Libraries */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				FA96238A252224C6000788C7 /* libplist-2.0.3.dylib in Embed Libraries */,
+			);
+			name = "Embed Libraries";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FA72CCF22521C3A00011CF34 /* bplist_parser */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = bplist_parser; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA72CCF52521C3A00011CF34 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		FA9623862522237E000788C7 /* bplist_parser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bplist_parser.entitlements; sourceTree = "<group>"; };
 		FAA3760C2521C4CD00F89E48 /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		FAA3760E2521C63500F89E48 /* processes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = processes.plist; sourceTree = "<group>"; };
 		FAA376152521ED0200F89E48 /* archived_bplist_parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = archived_bplist_parser.c; sourceTree = "<group>"; };
@@ -65,10 +78,11 @@
 		FA72CCF42521C3A00011CF34 /* bplist_parser */ = {
 			isa = PBXGroup;
 			children = (
+				FA9623862522237E000788C7 /* bplist_parser.entitlements */,
 				FA72CCF52521C3A00011CF34 /* main.c */,
 				FAA3760E2521C63500F89E48 /* processes.plist */,
-				FAA376152521ED0200F89E48 /* archived_bplist_parser.c */,
 				FAA376162521ED0300F89E48 /* archived_plist_parser.h */,
+				FAA376152521ED0200F89E48 /* archived_bplist_parser.c */,
 			);
 			path = bplist_parser;
 			sourceTree = "<group>";
@@ -91,6 +105,7 @@
 				FA72CCEE2521C3A00011CF34 /* Sources */,
 				FA72CCEF2521C3A00011CF34 /* Frameworks */,
 				FA72CCF02521C3A00011CF34 /* CopyFiles */,
+				FA96238B252224C6000788C7 /* Embed Libraries */,
 			);
 			buildRules = (
 			);
@@ -258,8 +273,9 @@
 		FA72CCFA2521C3A00011CF34 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = bplist_parser/bplist_parser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D9BQ629VP;
+				DEVELOPMENT_TEAM = 2J9L4D6D44;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = /usr/local/opt/libplist/include;
 				LIBRARY_SEARCH_PATHS = (
@@ -274,8 +290,9 @@
 		FA72CCFB2521C3A00011CF34 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = bplist_parser/bplist_parser.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6D9BQ629VP;
+				DEVELOPMENT_TEAM = 2J9L4D6D44;
 				ENABLE_HARDENED_RUNTIME = YES;
 				HEADER_SEARCH_PATHS = /usr/local/opt/libplist/include;
 				LIBRARY_SEARCH_PATHS = (

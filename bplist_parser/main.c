@@ -7,7 +7,13 @@
 //
 
 #include <stdio.h>
+#include <stdlib.h>
 #include <plist/plist.h>
+#include <malloc/malloc.h>
+#include <strings.h>
+
+#define ENABLE_PRINT 1
+
 #include "archived_plist_parser.h"
 
 
@@ -21,7 +27,7 @@ char *readFile(char *fileName) {
     fseek(file, 0, SEEK_END);
     long f_size = ftell(file);
     fseek(file, 0, SEEK_SET);
-    code = malloc(f_size);
+    code = (char *)malloc(f_size);
 
     while ((c = fgetc(file)) != EOF) {
         code[n++] = (char)c;
@@ -36,8 +42,9 @@ char *readFile(char *fileName) {
 int main(int argc, const char * argv[]) {
     // insert code here...
     plist_t plist = NULL;
+//    printf("%s", __FILE__);
     const char *data = readFile("/Users/wanglun/Documents/workspace/bplist_parser/bplist_parser/processes.plist");
-    plist_from_xml(data, strlen(data), &plist);
+    plist_from_xml(data, (uint32_t)strlen(data), &plist);
     
     plist_t new_plist = parse_archived_plist(plist);
     print_plist(new_plist);
