@@ -135,7 +135,6 @@ plist_t parse_archived_plist(plist_t bplist) {
     uint64_t root_uid_val;
     plist_get_uint_val(root_uid, &root_uid_val);
 
-    
     //
     // get root class id
     plist_t data = plist_array_get_item(objects, root_uid_val);
