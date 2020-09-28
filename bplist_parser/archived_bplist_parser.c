@@ -108,6 +108,13 @@ archived_plist_data_type parse_class_type_uid(plist_t objects, uint32_t classTyp
     }
 }
 
+int plist_is_archived(plist_t plist) {
+    plist_t *archive_node = plist_dict_get_item(plist, "$archiver");
+    char *s = NULL;
+    plist_get_string_val(archive_node, &s);
+    return strcmp(s, "NSKeyedArchiver") == 0;
+}
+
 // Object Key
 // Read from Array of NS.keys
 char *parse_bplist_object_key(plist_t objects, plist_t current_node_key) {
@@ -203,6 +210,10 @@ plist_t parse_bplist_UID_object(plist_t objects, plist_t uid_node) {
 
 // API
 plist_t parse_archived_plist(plist_t bplist) {
+    if (plist_is_archived(bplist) == 0) {
+        return bplist;
+    }
+    
     // root type
     plist_t root_uid = plist_access_path(bplist, 3, "$top", "root", "CF$UID");
     plist_t objects = plist_dict_get_item(bplist, "$objects");

@@ -13,6 +13,7 @@
 
 #include <plist/plist.h>
 
+int plist_is_archived(plist_t plist);
 plist_t parse_archived_plist(plist_t plist);
 void print_plist(plist_t pl);
 
