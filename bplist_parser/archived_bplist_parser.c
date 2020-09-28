@@ -110,6 +110,10 @@ archived_plist_data_type parse_class_type_uid(plist_t objects, uint32_t classTyp
 
 int plist_is_archived(plist_t plist) {
     plist_t *archive_node = plist_dict_get_item(plist, "$archiver");
+    if (archive_node == NULL) {
+        return 0;
+    }
+    
     char *s = NULL;
     plist_get_string_val(archive_node, &s);
     return strcmp(s, "NSKeyedArchiver") == 0;
