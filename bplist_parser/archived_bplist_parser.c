@@ -65,11 +65,11 @@ plist_t parse_bplist_object(plist_t objects, plist_t data);
 
 
 typedef enum : uint32_t {
-    ArchivedPlistDataTypeDictionary,
-    ArchivedPlistDataTypeArray,
-    ArchivedPlistDataTypeDate,
-    ArchivedPlistDataTypeUnknown
-} ArchivedPlistDataType;
+    archived_plist_data_type_dictionary,
+    archived_plist_data_type_array,
+    archived_plist_data_type_date,
+    archived_plist_data_type_unknown
+} archived_plist_data_type;
 
 uint64_t plist_get_UID_val(plist_t node) {
     uint64_t uid_val = 0;
@@ -87,7 +87,7 @@ uint64_t plist_get_UID_val(plist_t node) {
 }
 
 
-ArchivedPlistDataType parse_class_type_uid(plist_t objects, uint32_t classTypeUID) {
+archived_plist_data_type parse_class_type_uid(plist_t objects, uint32_t classTypeUID) {
     plist_t item = plist_array_get_item(objects, classTypeUID);
     plist_t data_type_classname = plist_dict_get_item(item, "$classname");
     char * data_type_classname_val;
@@ -96,15 +96,15 @@ ArchivedPlistDataType parse_class_type_uid(plist_t objects, uint32_t classTypeUI
     if(strcmp(data_type_classname_val, "NSMutableDictionary") == 0 ||
        strcmp(data_type_classname_val, "NSDictionary") == 0
        ) {
-        return ArchivedPlistDataTypeDictionary;
+        return archived_plist_data_type_dictionary;
     } else if(strcmp(data_type_classname_val, "NSMutableArray") == 0 ||
               strcmp(data_type_classname_val, "NSArray") == 0
               ) {
-        return ArchivedPlistDataTypeArray;
+        return archived_plist_data_type_array;
     } else if (strcmp(data_type_classname_val, "NSDate") == 0) {
-        return ArchivedPlistDataTypeDate;
+        return archived_plist_data_type_date;
     } else {
-        return ArchivedPlistDataTypeUnknown;
+        return archived_plist_data_type_unknown;
     }
 }
 
@@ -167,12 +167,12 @@ plist_t parse_bplist_object(plist_t objects, plist_t data) {
     uint64_t data_type_uid_val = plist_get_UID_val(data_type_uid);
     
     {
-        ArchivedPlistDataType type = parse_class_type_uid(objects, (uint32_t)data_type_uid_val);
-        if (type == ArchivedPlistDataTypeDictionary) {
+        archived_plist_data_type type = parse_class_type_uid(objects, (uint32_t)data_type_uid_val);
+        if (type == archived_plist_data_type_dictionary) {
             new_plist = parse_archived_plist_dictionary(objects, data);
-        } else if (type == ArchivedPlistDataTypeArray) {
+        } else if (type == archived_plist_data_type_array) {
             new_plist = parse_archived_plist_array(objects, data);
-        } else if (type == ArchivedPlistDataTypeDate) {
+        } else if (type == archived_plist_data_type_date) {
             new_plist = parse_archived_plist_date(objects, data);
         } else {
             
