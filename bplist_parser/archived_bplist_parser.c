@@ -213,14 +213,15 @@ plist_t parse_bplist_UID_object(plist_t objects, plist_t uid_node) {
 }
 
 // API
-plist_t parse_archived_plist(plist_t bplist) {
-    if (plist_is_archived(bplist) == 0) {
-        return bplist;
+void plist_unarchive(plist_t plist, plist_t *output) {
+    if (plist_is_archived(plist) == 0) {
+        *output = plist_copy(plist);
+        return;
     }
     
     // root type
-    plist_t root_uid = plist_access_path(bplist, 3, "$top", "root", "CF$UID");
-    plist_t objects = plist_dict_get_item(bplist, "$objects");
+    plist_t root_uid = plist_access_path(plist, 3, "$top", "root", "CF$UID");
+    plist_t objects = plist_dict_get_item(plist, "$objects");
     
     // get root Id
     uint64_t root_uid_val = plist_get_UID_val(root_uid);
@@ -228,6 +229,6 @@ plist_t parse_archived_plist(plist_t bplist) {
     // get root class id
     plist_t data = plist_array_get_item(objects, (uint32_t)root_uid_val);
     
-    return parse_bplist_object(objects, data);
+    *output = parse_bplist_object(objects, data);
 }
 

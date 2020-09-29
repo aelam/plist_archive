@@ -270,13 +270,15 @@ int main(int argc, const char * argv[]) {
         if (plist_is_binary(plist_entire, read_size))
         {
             plist_from_bin(plist_entire, read_size, &root_node);
-            plist_t new_plist = parse_archived_plist(root_node);
+            plist_t new_plist = NULL;
+            plist_unarchive(root_node, &new_plist);
             plist_to_xml(new_plist, &plist_out, &size);
         }
         else
         {
             plist_from_xml(plist_entire, read_size, &root_node);
-            plist_t new_plist = parse_archived_plist(root_node);
+            plist_t new_plist = NULL;
+            plist_unarchive(root_node, &new_plist);
             plist_to_bin(new_plist, &plist_out, &size);
         }
     }
@@ -292,19 +294,22 @@ int main(int argc, const char * argv[]) {
             else
             {
                 plist_from_xml(plist_entire, read_size, &root_node);
-                plist_t new_plist = parse_archived_plist(root_node);
+                plist_t new_plist = NULL;
+                plist_unarchive(root_node, &new_plist);
                 plist_to_bin(new_plist, &plist_out, &size);
             }
         } else if (options->out_fmt == 2) {
             if (plist_is_binary(plist_entire, read_size)) {
                 plist_from_bin(plist_entire, read_size, &root_node);
-                plist_t new_plist = parse_archived_plist(root_node);
+                plist_t new_plist = NULL;
+                plist_unarchive(root_node, &new_plist);
                 plist_to_xml(new_plist, &plist_out, &size);
             }
             else
             {
                 plist_from_xml(plist_entire, read_size, &root_node);
-                plist_t new_plist = parse_archived_plist(root_node);
+                plist_t new_plist = NULL;
+                plist_unarchive(root_node, &new_plist);
                 plist_to_xml(new_plist, &plist_out, &size);
             }
         }

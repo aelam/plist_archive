@@ -14,7 +14,7 @@
 #include <plist/plist.h>
 
 int plist_is_archived(plist_t plist);
-plist_t parse_archived_plist(plist_t plist);
+void plist_unarchive(plist_t plist, plist_t *output);
 void print_plist(plist_t pl);
 
 #endif /* bplist_parser_h */
