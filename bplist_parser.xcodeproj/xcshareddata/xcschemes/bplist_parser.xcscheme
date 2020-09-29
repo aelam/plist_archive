@@ -60,7 +60,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-f bin"
+            argument = "-f xml"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

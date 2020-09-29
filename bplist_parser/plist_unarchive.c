@@ -154,8 +154,14 @@ plist_t parse_archived_plist_dictionary(plist_t objects, plist_t data) {
 }
 
 plist_t parse_archived_plist_date(plist_t objects, plist_t date) {
-    plist_t node_time = plist_access_path(date, 1, "NS.time");
-    return plist_copy(node_time);
+    plist_t node_time_real = plist_access_path(date, 1, "NS.time");
+    double time = 0;
+    plist_get_real_val(node_time_real, &time);
+    
+    int32_t seconds = (int32_t)time;
+    int32_t usec = (int32_t)((time - (double)seconds) * 1000);
+    plist_t node_time = plist_new_date(seconds, usec);
+    return node_time;
 }
 
 plist_t parse_archived_plist_array(plist_t objects, plist_t data) {
