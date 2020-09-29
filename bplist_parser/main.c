@@ -20,7 +20,7 @@
 
 #define BUF_SIZE 2048 // Seems to be a decent start to cover most stdin files
 
-#include "archived_plist_parser.h"
+#include "plist_unarchive.h"
 
 
 char *readFile(char *fileName) {
@@ -273,6 +273,7 @@ int main(int argc, const char * argv[]) {
             plist_t new_plist = NULL;
             plist_unarchive(root_node, &new_plist);
             plist_to_xml(new_plist, &plist_out, &size);
+            plist_free(new_plist);
         }
         else
         {
@@ -280,6 +281,7 @@ int main(int argc, const char * argv[]) {
             plist_t new_plist = NULL;
             plist_unarchive(root_node, &new_plist);
             plist_to_bin(new_plist, &plist_out, &size);
+            plist_free(new_plist);
         }
     }
     else
@@ -297,6 +299,7 @@ int main(int argc, const char * argv[]) {
                 plist_t new_plist = NULL;
                 plist_unarchive(root_node, &new_plist);
                 plist_to_bin(new_plist, &plist_out, &size);
+                plist_free(new_plist);
             }
         } else if (options->out_fmt == 2) {
             if (plist_is_binary(plist_entire, read_size)) {
@@ -304,6 +307,7 @@ int main(int argc, const char * argv[]) {
                 plist_t new_plist = NULL;
                 plist_unarchive(root_node, &new_plist);
                 plist_to_xml(new_plist, &plist_out, &size);
+                plist_free(new_plist);
             }
             else
             {
@@ -311,6 +315,7 @@ int main(int argc, const char * argv[]) {
                 plist_t new_plist = NULL;
                 plist_unarchive(root_node, &new_plist);
                 plist_to_xml(new_plist, &plist_out, &size);
+                plist_free(new_plist);
             }
         }
     }

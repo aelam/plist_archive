@@ -10,7 +10,7 @@
 		FA72CCF62521C3A00011CF34 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = FA72CCF52521C3A00011CF34 /* main.c */; };
 		FA96238A252224C6000788C7 /* libplist-2.0.3.dylib in Embed Libraries */ = {isa = PBXBuildFile; fileRef = FAA3760C2521C4CD00F89E48 /* libplist-2.0.3.dylib */; };
 		FAA3760D2521C4CD00F89E48 /* libplist-2.0.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA3760C2521C4CD00F89E48 /* libplist-2.0.3.dylib */; };
-		FAA376172521ED0300F89E48 /* archived_bplist_parser.c in Sources */ = {isa = PBXBuildFile; fileRef = FAA376152521ED0200F89E48 /* archived_bplist_parser.c */; };
+		FAA376172521ED0300F89E48 /* plist_unarchive.c in Sources */ = {isa = PBXBuildFile; fileRef = FAA376152521ED0200F89E48 /* plist_unarchive.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,8 +42,8 @@
 		FA9623862522237E000788C7 /* bplist_parser.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bplist_parser.entitlements; sourceTree = "<group>"; };
 		FAA3760C2521C4CD00F89E48 /* libplist-2.0.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libplist-2.0.3.dylib"; path = "../../../../../usr/local/Cellar/libplist/2.2.0/lib/libplist-2.0.3.dylib"; sourceTree = "<group>"; };
 		FAA3760E2521C63500F89E48 /* processes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = processes.plist; sourceTree = "<group>"; };
-		FAA376152521ED0200F89E48 /* archived_bplist_parser.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = archived_bplist_parser.c; sourceTree = "<group>"; };
-		FAA376162521ED0300F89E48 /* archived_plist_parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = archived_plist_parser.h; sourceTree = "<group>"; };
+		FAA376152521ED0200F89E48 /* plist_unarchive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = plist_unarchive.c; sourceTree = "<group>"; };
+		FAA376162521ED0300F89E48 /* plist_unarchive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = plist_unarchive.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +81,8 @@
 				FA9623862522237E000788C7 /* bplist_parser.entitlements */,
 				FA72CCF52521C3A00011CF34 /* main.c */,
 				FAA3760E2521C63500F89E48 /* processes.plist */,
-				FAA376162521ED0300F89E48 /* archived_plist_parser.h */,
-				FAA376152521ED0200F89E48 /* archived_bplist_parser.c */,
+				FAA376162521ED0300F89E48 /* plist_unarchive.h */,
+				FAA376152521ED0200F89E48 /* plist_unarchive.c */,
 			);
 			path = bplist_parser;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAA376172521ED0300F89E48 /* archived_bplist_parser.c in Sources */,
+				FAA376172521ED0300F89E48 /* plist_unarchive.c in Sources */,
 				FA72CCF62521C3A00011CF34 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
